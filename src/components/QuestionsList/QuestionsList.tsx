@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import moment from 'moment';
 
 import { useServices } from "../ServicesProvider/hooks";
 import { Question } from "../../models";
@@ -21,7 +22,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
               <li key={question.id}>
                   <div className="question-description">
                       <div className="label">{question.title}</div>
-                      <div className="expiration-date">⏳ 02/03/04 12:03</div>
+                      <div className="expiration-date">⏳ {moment(question.endingDate).format('LLL')}</div>
                   </div>
                   <div className="go-to-question"> > </div>
               </li>`
