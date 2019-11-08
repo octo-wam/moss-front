@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Question, Answer } from "../../models";
+import { Question, Answer, Vote } from "../../models";
 import { useServices } from "../ServicesProvider";
 import moment from "moment";
 
@@ -9,13 +9,30 @@ export interface QuestionDetailProps {
 
 export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
   const services = useServices();
+  const [showResults, setShowResults] = useState(false);
+  const [isVoted, setVoted] = useState(false);
   const [currentAnswerId, setCurrentAnswerId] = useState<Answer | null>(null);
+  const [votes, setVotes] = useState<Vote[]>([]);
   const [isFormDisabled, setFormDisabled] = useState(false);
   const [question, setQuestion] = useState<Question | null>(null);
 
   useEffect(() => {
-    services.question.fetchQuestion(id).then(setQuestion);
-  }, [services.question, id]);
+    Promise.all([
+      services.question.fetchQuestion(id),
+      services.vote.fetchVotesByQuestionId(id),
+      services.me.fetchMe()
+    ]).then(([question, votes, me]) => {
+      const hasUserVoted = !!votes.find(vote => vote.user.id === me.id);
+
+      setQuestion(question);
+      setVotes(votes);
+      setVoted(hasUserVoted);
+
+      if (hasUserVoted) {
+        setFormDisabled(true);
+      }
+    });
+  }, [services.question, services.vote, services.me, id]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,11 +41,21 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
 
     setFormDisabled(true);
     setCurrentAnswerId(null);
+    setVoted(true);
+  }
+
+  function getVoteCountForAnswer(answer: Answer) {
+    return votes.filter(vote => vote.answerId === answer.id).length;
+  }
+
+  function handleShowResultsClick() {
+    setShowResults(true);
   }
 
   if (question === null) {
     return <p>Loading...</p>;
   }
+
   return (
     <div className="question-detail">
       <form onSubmit={handleSubmit}>
@@ -52,7 +79,12 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
                 id={answer.id}
                 value={answer.id}
               />
-              <label htmlFor={answer.id}>{answer.title}</label>
+              <label htmlFor={answer.id}>
+                {answer.title}{" "}
+                {(isVoted || showResults) && (
+                  <>({getVoteCountForAnswer(answer)})</>
+                )}
+              </label>
             </li>
           ))}
         </ul>
@@ -61,7 +93,9 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
           <button disabled={!currentAnswerId} type="submit">
             Valider
           </button>
-          <button type="button">Voir les résultats</button>
+          <button type="button" onClick={handleShowResultsClick}>
+            Voir les résultats
+          </button>
         </footer>
       </form>
     </div>
