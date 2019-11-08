@@ -1,4 +1,3 @@
-import "./Header.scss";
 import octoLogo from "./octo-logo.svg"
 import React, { useEffect, useState } from "react";
 
