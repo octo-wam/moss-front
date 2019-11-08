@@ -1,6 +1,31 @@
 .questions-list {
-  h1 {
-    font-weight: normal;
-    color: $secondary-color;
+  a {
+    text-decoration: none;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: $default-font-family;
+    color: $primary-color;
+    border: 1px solid $secondary-color;
+    border-radius: 5px;
+    margin: 0 10px 20px 10px;
+    padding: 20px;
+
+    .label {
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+    }
+
+    .expiration-date {
+      font-size: .85rem;
+      font-weight: bold;
+    }
+
+    .go-to-question {
+      font-size: 1.8rem;
+    }
   }
 }

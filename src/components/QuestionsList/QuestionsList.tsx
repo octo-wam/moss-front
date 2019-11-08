@@ -15,11 +15,17 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
 
   return (
     <div className="questions-list">
-      <h1>Questions list</h1>
-
       <ul>
         {questions.map(question => (
-          <li key={question.id}>{question.title}</li>
+          <a href={`question/${question.id}`}>
+              <li key={question.id}>
+                  <div className="question-description">
+                      <div className="label">{question.title}</div>
+                      <div className="expiration-date">⏳ 02/03/04 12:03</div>
+                  </div>
+                  <div className="go-to-question"> > </div>
+              </li>`
+          </a>
         ))}
       </ul>
     </div>

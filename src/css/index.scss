@@ -1,2 +1,8 @@
 @import 'variables.scss';
 @import '../components/QuestionsList/QuestionsList.scss';
+@import '../components/Header/Header.scss';
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
