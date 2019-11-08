@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Question } from "../../models";
 import { useServices } from "../ServicesProvider";
+import moment from "moment";
 
 export interface QuestionDetailProps { id: string }
 
@@ -30,7 +31,7 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
       <header>
         <h1 className="title">{ question.title }</h1>
         <p className="description">{ question.description }</p>
-        <p className="ending-date">Expires on { question.endingDate }</p>
+        <p className="ending-date">Expires on {moment(question.endingDate).format('LLL')}</p>
       </header>
 
       <ul>
