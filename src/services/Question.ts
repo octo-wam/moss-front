@@ -30,18 +30,13 @@ const QUESTIONS: Question[] = [
 
 export function createQuestionService(http: AxiosInstance) {
   function fetchQuestions(): Promise<Question[]> {
-    return Promise.resolve(QUESTIONS);
-
-    // return http.get<Question[]>("/questions").then(response => response.data);
+    return http.get<Question[]>("/questions").then(response => response.data);
   }
 
   function fetchQuestion(questionId: string) {
-    // return http
-    //   .get<Question>(`/questions/${questionId}`)
-    //   .then(response => response.data);
-    const question = QUESTIONS.find(({ id }) => id === questionId)!;
-
-    return Promise.resolve(question);
+    return http
+      .get<Question>(`/questions/${questionId}`)
+      .then(response => response.data);
   }
 
   return { fetchQuestions, fetchQuestion };

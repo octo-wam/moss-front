@@ -22,16 +22,16 @@ const VOTES: Vote[] = [
 
 export function createVoteService(http: AxiosInstance) {
   function fetchVotesByQuestionId(questionId: string): Promise<Vote[]> {
-    // return http.get<Vote[]>(`/questions/${questionId}/votes`).then(response => response.data)
-    return Promise.resolve(VOTES);
+    return http
+      .get<Vote[]>(`/questions/${questionId}/votes`)
+      .then(response => response.data);
   }
 
   function createVoteByQuestionid(
     questionId: string,
     answerId: string
   ): Promise<unknown> {
-    // return http.post(`/questions/${questionId}/votes`, { answerId })
-    return Promise.resolve();
+    return http.post(`/questions/${questionId}/votes`, { answerId });
   }
 
   return { fetchVotesByQuestionId, createVoteByQuestionid };
