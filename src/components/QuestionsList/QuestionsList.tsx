@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-import { api } from "../../api";
+import { useServices } from "../ServicesProvider/hooks";
 import { Question } from "../../models";
 
 export interface QuestionsListProps {}
 
 export const QuestionsList: React.FC<QuestionsListProps> = () => {
+  const services = useServices();
   const [questions, setQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
-    api.question.fetchQuestions().then(setQuestions);
-  }, []);
+    services.question.fetchQuestions().then(setQuestions);
+  }, [services.question]);
 
   return (
     <div className="questions-list">
