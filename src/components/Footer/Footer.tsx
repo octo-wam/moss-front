@@ -1,4 +1,3 @@
-import "./Footer.scss";
 import React, { useEffect, useState } from "react";
 
 export interface FooterProps {}
@@ -6,7 +5,14 @@ export interface FooterProps {}
 export const Footer: React.FC<FooterProps> = () => {
     return (
         <div className="footer">
-            Made with love by: MOB - WEBF - WOAPI ♥
+            <div>
+                Made with love by
+            </div>
+            <div>
+                <span className="heart">♥</span>
+                <span className="tribes-names"> MOB - WEBF - WOAPI </span>
+                <span className="heart">♥</span>
+            </div>
         </div>
     );
 };

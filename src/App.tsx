@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 import { QuestionsList } from "./components/QuestionsList/QuestionsList";
 import { useServices } from "./components/ServicesProvider/hooks";
 import { Me } from "./models";
@@ -32,6 +33,7 @@ const App: React.FC = () => {
                 <Redirect to="/questions" />
             </Switch>
         </div>
+        <Footer/>
     </div>
   );
 };
