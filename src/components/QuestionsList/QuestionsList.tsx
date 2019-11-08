@@ -23,7 +23,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                       <div className="label">{question.title}</div>
                       <div className="expiration-date">⏳ 02/03/04 12:03</div>
                   </div>
-                  <div className="go-to-question"> &#12297; </div>
+                  <div className="go-to-question"> > </div>
               </li>`
           </a>
         ))}
