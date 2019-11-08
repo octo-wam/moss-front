@@ -38,7 +38,9 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
     e.preventDefault();
 
     await services.vote.createVoteByQuestionid(id, currentAnswerId!.id);
+    const votes = await services.vote.fetchVotesByQuestionId(id);
 
+    setVotes(votes);
     setFormDisabled(true);
     setCurrentAnswerId(null);
     setVoted(true);
