@@ -9,12 +9,12 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { createMeService } from "./services/Me";
 import { createQuestionService } from "./services/Question";
+import { createVoteService } from "./services/Vote";
 import { servicesContext } from "./components/ServicesProvider";
+import { getOauthTokenOrRedirect } from "./utils/token";
 
-const authToken = window.localStorage.getItem("auth:token");
+const authToken = getOauthTokenOrRedirect();
 const apiUrl = process.env.REACT_APP_API_URL!;
-
-// TODO: redirect if !authToken
 
 const httpClient = axios.create({
   baseURL: apiUrl,
@@ -25,10 +25,11 @@ const httpClient = axios.create({
 
 const meService = createMeService(httpClient);
 const questionService = createQuestionService(httpClient);
+const voteService = createVoteService(httpClient);
 
 ReactDOM.render(
   <servicesContext.Provider
-    value={{ me: meService, question: questionService }}
+    value={{ me: meService, question: questionService, vote: voteService }}
   >
     <BrowserRouter>
       <App />
