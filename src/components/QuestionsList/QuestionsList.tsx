@@ -19,7 +19,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
 
       <ul>
         {questions.map(question => (
-          <li key={question.id}>{question.label}</li>
+          <li key={question.id}>{question.title}</li>
         ))}
       </ul>
     </div>
