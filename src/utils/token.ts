@@ -23,6 +23,12 @@ export function getOauthTokenOrRedirect() {
     return tokenFromLocalStorage;
   }
 
-  document.location.href =
-    "https://octo-moss-back.herokuapp.com/auth/google_oauth2";
+  redirectToLoginPage();
+}
+
+export const LOGIN_PAGE_URL =
+  "https://octo-moss-back.herokuapp.com/auth/google_oauth2";
+
+export function redirectToLoginPage() {
+  document.location.href = LOGIN_PAGE_URL;
 }

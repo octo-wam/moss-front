@@ -1,25 +1,6 @@
 import { AxiosInstance } from "axios";
 import { Vote } from "../models";
 
-const VOTES: Vote[] = [
-  {
-    id: "123456",
-    answerId: "2",
-    user: {
-      id: "123456Y",
-      name: "Jean Bob"
-    }
-  },
-  {
-    id: "12768",
-    answerId: "1",
-    user: {
-      id: "123456Y",
-      name: "Bob Lebowsky"
-    }
-  }
-];
-
 export function createVoteService(http: AxiosInstance) {
   function fetchVotesByQuestionId(questionId: string): Promise<Vote[]> {
     return http

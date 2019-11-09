@@ -1,68 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { Question, Answer, Vote } from "../../models";
-import { useServices } from "../ServicesProvider";
+import React from "react";
 import moment from "moment";
+
+import { useQuestionDetailState } from "./hooks";
 
 export interface QuestionDetailProps {
   id: string;
 }
 
 export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
-  const services = useServices();
-  const [showResults, setShowResults] = useState(false);
-  const [isVoted, setVoted] = useState(false);
-  const [currentAnswerId, setCurrentAnswerId] = useState<Answer | null>(null);
-  const [votes, setVotes] = useState<Vote[]>([]);
-  const [isFormDisabled, setFormDisabled] = useState(false);
-  const [question, setQuestion] = useState<Question | null>(null);
+  const {
+    state,
+    setCurrentAnswer,
+    submitAnswer,
+    showResults,
+    getVoteCountForAnswer
+  } = useQuestionDetailState(id);
 
-  useEffect(() => {
-    Promise.all([
-      services.question.fetchQuestion(id),
-      services.vote.fetchVotesByQuestionId(id),
-      services.me.fetchMe()
-    ]).then(([question, votes, me]) => {
-      const hasUserVoted = !!votes.find(vote => vote.user.id === me.id);
-
-      setQuestion(question);
-      setVotes(votes);
-      setVoted(hasUserVoted);
-
-      if (hasUserVoted) {
-        setFormDisabled(true);
-      }
-    });
-  }, [services.question, services.vote, services.me, id]);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-
-    await services.vote.createVoteByQuestionid(id, currentAnswerId!.id);
-    const votes = await services.vote.fetchVotesByQuestionId(id);
-
-    setVotes(votes);
-    setFormDisabled(true);
-    setCurrentAnswerId(null);
-    setVoted(true);
-  }
-
-  function getVoteCountForAnswer(answer: Answer) {
-    return votes.filter(vote => vote.answerId === answer.id).length;
-  }
-
-  function handleShowResultsClick() {
-    setShowResults(true);
-  }
-
-  if (question === null) {
+  if (!state.question) {
     return <p>Loading...</p>;
   }
 
+  const { question, currentAnswer, hasUserVoted, areResultsShown } = state;
+
   return (
     <div className="question-detail">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitAnswer}>
         <header>
-          <h1 className="title">{question.title}</h1>
+          <h2 className="title">{question.title}</h2>
           <p className="description">{question.description}</p>
           <p className="ending-date">
             Expires on {moment(question.endingDate).format("LLL")}
@@ -73,9 +37,9 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
           {question.answers.map(answer => (
             <li key={answer.id}>
               <input
-                checked={currentAnswerId === answer}
-                onChange={() => setCurrentAnswerId(answer)}
-                disabled={isFormDisabled}
+                checked={currentAnswer === answer}
+                onChange={() => setCurrentAnswer(answer)}
+                disabled={hasUserVoted}
                 type="radio"
                 name="answer"
                 id={answer.id}
@@ -83,7 +47,7 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
               />
               <label htmlFor={answer.id}>
                 {answer.title}{" "}
-                {(isVoted || showResults) && (
+                {(hasUserVoted || areResultsShown) && (
                   <>({getVoteCountForAnswer(answer)})</>
                 )}
               </label>
@@ -92,10 +56,10 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
         </ul>
 
         <footer>
-          <button disabled={!currentAnswerId} type="submit">
+          <button disabled={!currentAnswer} type="submit">
             Valider
           </button>
-          <button type="button" onClick={handleShowResultsClick}>
+          <button type="button" onClick={showResults}>
             Voir les résultats
           </button>
         </footer>

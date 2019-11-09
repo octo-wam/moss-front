@@ -6,11 +6,11 @@ export interface HeaderProps {}
 export const Header: React.FC<HeaderProps> = () => {
   return (
     <div className="header">
-      <div className="header-acronym">
+      <h1 className="header-acronym" aria-label="Moss">
         <span>M</span>
         <img src={octoLogo} alt="O" />
         <span>SS</span>
-      </div>
+      </h1>
       <div className="header-def">Massive Onlive Simple Sociocraty</div>
     </div>
   );

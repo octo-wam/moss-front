@@ -6,7 +6,7 @@ import { Question } from "../../models";
 
 export interface QuestionsListProps {}
 
-export const QuestionsList: React.FC<QuestionsListProps> = () => {
+const useQuestionsListState = () => {
   const services = useServices();
   const [questions, setQuestions] = useState<Question[]>([]);
 
@@ -14,22 +14,30 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
     services.question.fetchQuestions().then(setQuestions);
   }, [services.question]);
 
+  return { questions };
+};
+
+export const QuestionsList: React.FC<QuestionsListProps> = () => {
+  const { questions } = useQuestionsListState();
+
   return (
     <div className="questions-list">
       <ul>
         {questions.map(question => (
-          <a href={`question/${question.id}`}>
-            <li key={question.id}>
+          <li key={question.id}>
+            <a href={`question/${question.id}`}>
               <div className="question-description">
                 <div className="label">{question.title}</div>
                 <div className="expiration-date">
-                  ⏳ {moment(question.endingDate).format("LLL")}
+                  <span role="img" aria-label="Expiration date">
+                    ⏳
+                  </span>{" "}
+                  {moment(question.endingDate).format("LLL")}
                 </div>
               </div>
               <div className="go-to-question"> > </div>
-            </li>
-            `
-          </a>
+            </a>
+          </li>
         ))}
       </ul>
     </div>
