@@ -26,7 +26,12 @@
   }
 
   input {
-    display: none;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
 
     + label {
       cursor: pointer;
@@ -38,14 +43,42 @@
       border-radius: 4px;
       color: $primary-color;
       font-size: 18px;
+      transition: all 0.2s ease;
+      transform: scale(1);
 
       &:hover {
         background-color: #eee;
       }
     }
+
+    &:checked + label {
+      background: $secondary-color;
+      border-color: $secondary-color;
+      font-weight: bold;
+    }
+
+    &:focus + label {
+      transform: scale(1.05);
+    }
   }
 
   button {
-    margin: 0 6px;
+    all: unset;
+    display: block;
+    margin: 8px auto;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    max-width: 230px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
+
+    background: $primary-color;
+    color: #fff;
+    font-weight: bold;
   }
 }
