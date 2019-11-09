@@ -1,6 +1,5 @@
 import "reset.css/reset.css";
 import "./css/index.scss";
-import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
