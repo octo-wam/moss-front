@@ -37,7 +37,7 @@ export const useQuestionDetailState = (id: string) => {
       return;
     }
 
-    await services.vote.createVoteByQuestionid(id, state.currentAnswer.id);
+    await services.vote.createVoteByQuestionId(id, state.currentAnswer.id);
 
     dispatch({
       type: "VOTE",

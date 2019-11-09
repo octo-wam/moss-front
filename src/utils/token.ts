@@ -30,7 +30,7 @@ export const LOGIN_PAGE_URL =
   "https://octo-moss-back.herokuapp.com/auth/google_oauth2";
 
 export function redirectToLoginPage() {
-  document.location.href = LOGIN_PAGE_URL;
+  window.location.href = LOGIN_PAGE_URL;
 }
 
 export function clearOauthToken() {

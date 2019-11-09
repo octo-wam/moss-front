@@ -8,14 +8,17 @@ export function createVoteService(http: AxiosInstance) {
       .then(response => response.data);
   }
 
-  function createVoteByQuestionid(
+  function createVoteByQuestionId(
     questionId: string,
     answerId: string
   ): Promise<unknown> {
     return http.post(`/questions/${questionId}/votes`, { answerId });
   }
 
-  return { fetchVotesByQuestionId, createVoteByQuestionid };
+  return {
+    fetchVotesByQuestionId,
+    createVoteByQuestionId
+  };
 }
 
 export type VoteService = ReturnType<typeof createVoteService>;
