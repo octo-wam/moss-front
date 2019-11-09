@@ -32,3 +32,7 @@ export const LOGIN_PAGE_URL =
 export function redirectToLoginPage() {
   document.location.href = LOGIN_PAGE_URL;
 }
+
+export function clearOauthToken() {
+  window.localStorage.removeItem(OAUTH_KEY_STORAGE_KEY);
+}
