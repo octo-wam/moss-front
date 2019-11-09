@@ -9,7 +9,7 @@ function getTokenFromLocalStorage() {
   return window.localStorage.getItem(OAUTH_KEY_STORAGE_KEY);
 }
 
-export function getOauthTokenOrRedirect() {
+export function getOauthTokenOrRedirect(): string {
   const tokenFromUrl = getTokenFromUrl();
 
   if (tokenFromUrl) {
@@ -24,6 +24,10 @@ export function getOauthTokenOrRedirect() {
   }
 
   redirectToLoginPage();
+
+  // Make TS compile. This code will never be reached as the client
+  // will be redirected first
+  return "";
 }
 
 export const LOGIN_PAGE_URL =
