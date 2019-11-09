@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 import { useServices } from "../ServicesProvider/hooks";
@@ -25,7 +26,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
       <ul>
         {questions.map(question => (
           <li key={question.id}>
-            <a href={`question/${question.id}`}>
+            <Link to={`question/${question.id}`}>
               <div className="question-description">
                 <div className="label">{question.title}</div>
                 <div className="expiration-date">
@@ -36,7 +37,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                 </div>
               </div>
               <div className="go-to-question"> > </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
