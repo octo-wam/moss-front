@@ -12,6 +12,7 @@ import { createVoteService } from "./services/Vote";
 import { servicesContext } from "./components/ServicesProvider";
 import { getOauthTokenOrRedirect } from "./utils/token";
 import { createHttpClient } from "./http";
+import * as serviceWorker from "./serviceWorker";
 
 const authToken = getOauthTokenOrRedirect();
 const apiUrl = process.env.REACT_APP_API_URL!;
@@ -32,3 +33,5 @@ ReactDOM.render(
   </servicesContext.Provider>,
   document.getElementById("root")
 );
+
+serviceWorker.register();
