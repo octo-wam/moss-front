@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = () => {
         <img src={octoLogo} alt="O" />
         <span>SS</span>
       </h1>
-      <div className="header-def">Massive Onlive Simple Sociocraty</div>
+      <div className="header-def">Massive Online Simple Sociocracy</div>
     </div>
   );
 };
