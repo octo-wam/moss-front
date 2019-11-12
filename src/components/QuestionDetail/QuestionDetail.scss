@@ -49,6 +49,15 @@
       &:hover {
         background-color: #eee;
       }
+
+      span {
+        display: block;
+      }
+
+      .answer-description {
+        margin-top: 8px;
+        font-size: 0.7rem;
+      }
     }
 
     &:checked + label {

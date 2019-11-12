@@ -46,10 +46,16 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
                 value={answer.id}
               />
               <label htmlFor={answer.id}>
-                {answer.title}{" "}
-                {(hasUserVoted || areResultsShown) && (
-                  <>({getVoteCountForAnswer(answer)})</>
-                )}
+                <span>
+                  {answer.title}{" "}
+                  {(hasUserVoted || areResultsShown) && (
+                    <>({getVoteCountForAnswer(answer)})</>
+                  )}
+                </span>
+
+                <span className="answer-description">
+                  ({answer.description})
+                </span>
               </label>
             </li>
           ))}
