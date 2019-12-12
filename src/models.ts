@@ -6,6 +6,13 @@ export interface Question {
   answers: Answer[];
 }
 
+export interface QuestionCreate {
+  title: string;
+  description: string;
+  endingDate: string;
+  answers: Answer[];
+}
+
 export interface Answer {
   id: string;
   title: string;

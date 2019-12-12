@@ -44,3 +44,18 @@ describe.skip("fetchQuestions", () => {
     expect(axios.get).toHaveBeenCalledWith("/questions/42");
   });
 });
+
+describe("createQuestion", () => {
+  it("Calls POST /questions", async () => {
+    // Given
+    (axios.post as jest.Mock).mockResolvedValue({ data: {} });
+
+    // When
+    const question = fixtures.aQuestion('a');
+    await service.createQuestion(question);
+
+    // Then
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith("/questions", question);
+  });
+});

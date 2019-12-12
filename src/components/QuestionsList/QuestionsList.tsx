@@ -41,6 +41,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
           </li>
         ))}
       </ul>
+      <Link to='/question/new'>+</Link>
     </div>
   );
 };
