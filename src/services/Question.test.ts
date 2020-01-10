@@ -1,29 +1,33 @@
-import axios from "axios";
 import { fixtures } from "../../test-utils";
 
 import { QuestionService, createQuestionService } from "./Question";
 
-jest.mock("axios");
-
 let service: QuestionService;
+let httpClient: any;
 
 beforeEach(() => {
-  service = createQuestionService(axios);
+  httpClient = {
+    get: jest.fn(),
+    post: jest.fn(),
+    delete: jest.fn(),
+    put: jest.fn(),
+  };
+  service = createQuestionService(httpClient);
 });
 
 describe("fetchQuestions", () => {
   it("Calls GET /questions", async () => {
     // Given
     const questions = fixtures.someQuestions();
-    (axios.get as jest.Mock).mockResolvedValue({ data: questions });
+    httpClient.get.mockResolvedValue({ data: questions });
 
     // When
     const result = await service.fetchQuestions();
 
     // Then
     expect(result).toEqual(questions);
-    expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith("/questions");
+    expect(httpClient.get).toHaveBeenCalledTimes(1);
+    expect(httpClient.get).toHaveBeenCalledWith("/questions");
   });
 });
 
@@ -33,29 +37,29 @@ describe.skip("fetchQuestions", () => {
     // Given
     const questionId = "42";
     const question = fixtures.aQuestion(questionId);
-    (axios.get as jest.Mock).mockResolvedValue({ data: question });
+    httpClient.get.mockResolvedValue({ data: question });
 
     // When
     const result = await service.fetchQuestion(questionId);
 
     // Then
     expect(result).toEqual(question);
-    expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith("/questions/42");
+    expect(httpClient.get).toHaveBeenCalledTimes(1);
+    expect(httpClient.get).toHaveBeenCalledWith("/questions/42");
   });
 });
 
 describe("createQuestion", () => {
   it("Calls POST /questions", async () => {
     // Given
-    (axios.post as jest.Mock).mockResolvedValue({ data: {} });
+    const question = fixtures.aQuestion('22');
+    httpClient.post.mockResolvedValue({ data: question });
 
     // When
-    const question = fixtures.aQuestion('a');
     await service.createQuestion(question);
 
     // Then
-    expect(axios.post).toHaveBeenCalledTimes(1);
-    expect(axios.post).toHaveBeenCalledWith("/questions", question);
+    expect(httpClient.post).toHaveBeenCalledTimes(1);
+    expect(httpClient.post).toHaveBeenCalledWith("/questions", question);
   });
 });
