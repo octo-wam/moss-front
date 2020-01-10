@@ -3,13 +3,4 @@
 @import "../components/QuestionDetail/QuestionDetail.scss";
 @import "../components/CreateQuestionForm/CreateQuestionForm";
 @import "../components/Header/Header.scss";
-@import "../components/Footer/Footer.scss";
 
-.App {
-  font-family: $default-font-family;
-}
-
-.content {
-  max-width: 800px;
-  margin: 0 auto;
-}

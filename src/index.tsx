@@ -5,13 +5,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
-import { createMeService } from "./services/Me";
-import { createQuestionService } from "./services/Question";
+import { createMeService, createQuestionService } from "./services";
 import { createVoteService } from "./services/Vote";
 import { servicesContext } from "./components/ServicesProvider";
 import { getOauthTokenOrRedirect } from "./utils/token";
 import { createHttpClient } from "./http";
 import * as serviceWorker from "./serviceWorker";
+import { Theme } from "./components/Theme/Theme";
 
 const authToken = getOauthTokenOrRedirect();
 const apiUrl = process.env.REACT_APP_API_URL!;
@@ -23,13 +23,15 @@ const questionService = createQuestionService(httpClient);
 const voteService = createVoteService(httpClient);
 
 ReactDOM.render(
-  <servicesContext.Provider
-    value={{ me: meService, question: questionService, vote: voteService }}
-  >
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </servicesContext.Provider>,
+  <Theme>
+    <servicesContext.Provider
+      value={{ me: meService, question: questionService, vote: voteService }}
+    >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </servicesContext.Provider>
+  </Theme>,
   document.getElementById("root")
 );
 
