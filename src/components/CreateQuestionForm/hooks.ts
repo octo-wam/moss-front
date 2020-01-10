@@ -4,7 +4,7 @@ import uuid from "uuid/v4";
 
 import { useServices } from "../ServicesProvider";
 
-export const useQuestionCreateState = () => {
+export const useCreateQuestionFormState = () => {
   const [title, setTitle] = useState(""); // initial value
   const [description, setDescription] = useState(""); // initial value
   const [endingDate, setEndingDate] = useState(""); // initial value

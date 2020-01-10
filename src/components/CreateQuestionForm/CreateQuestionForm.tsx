@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import uuid from "uuid/v4";
 
 import { useServices } from "../ServicesProvider";
-import { useQuestionCreateState } from "./hooks";
+import { useCreateQuestionFormState } from "./hooks";
 
-export interface QuestionCreateProps {}
+export interface CreateQuestionFormProps {}
 
-export const QuestionCreate: React.FC<QuestionCreateProps> = () => {
+export const CreateQuestionForm: React.FC<CreateQuestionFormProps> = () => {
   const {
     title,
     setTitle,
@@ -20,7 +20,7 @@ export const QuestionCreate: React.FC<QuestionCreateProps> = () => {
     updateAnswerTitle,
     updateAnswerDescription,
     handleSubmit
-  } = useQuestionCreateState();
+  } = useCreateQuestionFormState();
 
   return (
     <form onSubmit={handleSubmit}>
