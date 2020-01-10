@@ -4,6 +4,10 @@ form {
     margin: 10px;
     background-color: #fcfcfc;
 
+    label {
+      cursor: pointer;
+    }
+
     label, input {
       display: block;
     }
