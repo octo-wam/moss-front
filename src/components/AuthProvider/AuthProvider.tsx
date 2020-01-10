@@ -5,6 +5,7 @@ import { redirectToLoginPage } from "../../utils/token";
 import { Me } from "../../models";
 import { QuestionsList } from "../QuestionsList";
 import { QuestionDetail } from "../QuestionDetail";
+import { CreateQuestionForm } from '../CreateQuestionForm';
 import { useServices } from "../ServicesProvider";
 import { meContext } from "./context";
 
@@ -35,6 +36,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = () => {
     <meContext.Provider value={me}>
       <Switch>
         <Route exact path="/questions" render={() => <QuestionsList />} />
+        <Route exact path='/question/new' render={() => <CreateQuestionForm />} />
         <Route
           exact
           path="/question/:id"

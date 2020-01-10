@@ -1,6 +1,6 @@
 import { AxiosInstance } from "axios";
 
-import { Question } from "../models";
+import { Question, QuestionCreate } from "../models";
 
 export function createQuestionService(http: AxiosInstance) {
   function fetchQuestions(): Promise<Question[]> {
@@ -26,7 +26,11 @@ export function createQuestionService(http: AxiosInstance) {
   //     .then(response => response.data);
   // }
 
-  return { fetchQuestions, fetchQuestion };
+  function createQuestion(question: QuestionCreate) {
+    return http.post<Question>('/questions', question);
+  }
+
+  return { fetchQuestions, fetchQuestion, createQuestion };
 }
 
 export type QuestionService = ReturnType<typeof createQuestionService>;
