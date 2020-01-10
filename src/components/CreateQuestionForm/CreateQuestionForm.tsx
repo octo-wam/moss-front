@@ -5,9 +5,9 @@ import uuid from "uuid/v4";
 import { useServices } from "../ServicesProvider";
 import { useCreateQuestionFormState } from "./hooks";
 
-export interface CreateQuestionFormProps {}
+export interface CreateQuestionPayload {}
 
-export const CreateQuestionForm: React.FC<CreateQuestionFormProps> = () => {
+export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
   const {
     title,
     setTitle,
