@@ -64,9 +64,9 @@ export const CreateQuestionForm: React.FC<CreateQuestionFormProps> = () => {
         </label>
       </div>
 
-      <div className="availableAnswers">
+      <ul className="availableAnswers">
         {answers.map(answer => (
-          <div className="answer">
+          <li className="answer">
             <p>Réponse</p>
             <div className="field">
               <label htmlFor={`answer-title-${answer.id}`}>
@@ -95,12 +95,12 @@ export const CreateQuestionForm: React.FC<CreateQuestionFormProps> = () => {
                 />
               </label>
             </div>
-          </div>
+          </li>
         ))}
         <button type="button" className="add-answer" onClick={addAnswer}>
           +
         </button>
-      </div>
+      </ul>
       <div className="field">
         <button type="submit" className="submit-question">
           Créer le vote
