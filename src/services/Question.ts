@@ -27,7 +27,7 @@ export function createQuestionService(http: AxiosInstance) {
   // }
 
   function createQuestion(question: QuestionCreate) {
-    return http.post('/questions', question);
+    return http.post<Question>('/questions', question);
   }
 
   return { fetchQuestions, fetchQuestion, createQuestion };
