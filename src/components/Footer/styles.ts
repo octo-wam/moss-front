@@ -1,23 +1,22 @@
 import styled from "styled-components";
-import { color } from "../Theme/Theme";
 
 export const FooterLayout = styled.footer`
-  height: 70px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 0px -7px 13px -4px rgba(158, 158, 158, 1);
   flex-direction: column;
-  color: ${color("primary")};
+  padding: 1.5rem 0;
+  background: var(--color-footer);
 `;
 
 export const Heart = styled.span.attrs({
   children: "♥",
-  role: 'img'
+  role: "img"
 })`
-  color: #f542f5;
+  color: var(--color-pink);
 `;
 
 export const TribesNames = styled.p`
   font-weight: bold;
+  display: inline;
 `;

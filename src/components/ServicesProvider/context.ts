@@ -1,8 +1,6 @@
 import { createContext } from "react";
 
-import { MeService } from "../../services";
-import { QuestionService } from "../../services";
-import { VoteService } from "../../services/Vote";
+import { MeService, QuestionService, VoteService } from "../../services";
 
 export interface ServicesContext {
   me: MeService;

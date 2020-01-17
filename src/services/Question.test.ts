@@ -10,7 +10,7 @@ beforeEach(() => {
     get: jest.fn(),
     post: jest.fn(),
     delete: jest.fn(),
-    put: jest.fn(),
+    put: jest.fn()
   };
   service = createQuestionService(httpClient);
 });
@@ -31,8 +31,7 @@ describe("fetchQuestions", () => {
   });
 });
 
-// FIXME: when the API /question/:id it working
-describe.skip("fetchQuestions", () => {
+describe("fetchQuestions", () => {
   it("Calls GET /questions/42", async () => {
     // Given
     const questionId = "42";
@@ -52,7 +51,7 @@ describe.skip("fetchQuestions", () => {
 describe("createQuestion", () => {
   it("Calls POST /questions", async () => {
     // Given
-    const question = fixtures.aQuestion('22');
+    const question = fixtures.aQuestion("22");
     httpClient.post.mockResolvedValue({ data: question });
 
     // When

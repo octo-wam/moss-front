@@ -1,9 +1,18 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import uuid from "uuid/v4";
+import React from "react";
 
-import { useServices } from "../ServicesProvider";
 import { useCreateQuestionFormState } from "./hooks";
+import {
+  AnswersList,
+  AnswersTitle,
+  FormGroup,
+  FormLayout,
+  SubmitButton
+} from "./styles";
+import { Card } from "../../ui/Card/Card";
+import { FloatingLabelInput } from "../../ui/FloatingLabelInput/FloatingLabelInput";
+import { FloatingActionButton } from "../../ui/FloatingActionButton/FloatingActionButton";
+import checkmark from "./checkmark.svg";
+import { PageContent } from "../../ui/Layout/Layout";
 
 export interface CreateQuestionPayload {}
 
@@ -23,89 +32,85 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
   } = useCreateQuestionFormState();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="field">
-        <label htmlFor="title">
-          Question
-          <input
-            placeholder="Que voulez-vous faire comme WAMEO ?  "
-            id="title"
-            type="text"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-          />
-        </label>
-      </div>
+    <PageContent>
+      <Card>
+        <FormLayout onSubmit={handleSubmit}>
+          <FormGroup>
+            <FloatingLabelInput
+              id="title"
+              label="Question"
+              value={title}
+              onChange={setTitle}
+            />
+          </FormGroup>
 
-      <div className="field">
-        <label htmlFor="description">
-          Description
-          <input
-            placeholder="Nous sommes en train d’organiser un WAMEO - nous cherchons le meilleur plan !"
-            id="description"
-            type="textarea"
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            className="question-description"
-          />
-        </label>
-      </div>
+          <FormGroup>
+            <FloatingLabelInput
+              id="description"
+              label="Description"
+              value={description}
+              onChange={setDescription}
+            />
+          </FormGroup>
 
-      <div className="field">
-        <label htmlFor="endingDate">
-          Date de fin
-          <input
-            type="datetime-local"
-            id="endingDate"
-            name="meeting-time"
-            value={endingDate}
-            onChange={e => setEndingDate(e.target.value)}
-          />
-        </label>
-      </div>
-
-      <ul className="availableAnswers">
-        {answers.map(answer => (
-          <li className="answer">
-            <p>Réponse</p>
+          <FormGroup>
             <div className="field">
-              <label htmlFor={`answer-title-${answer.id}`}>
-                Intitulé
+              <label htmlFor="endingDate">
+                Date de fin
                 <input
-                  placeholder="Aux arcs"
-                  id={`answer-title-${answer.id}`}
-                  type="text"
-                  value={answer.title}
-                  onChange={e => updateAnswerTitle(answer.id, e.target.value)}
+                  type="datetime-local"
+                  id="endingDate"
+                  name="meeting-time"
+                  value={endingDate}
+                  onChange={e => setEndingDate(e.target.value)}
                 />
               </label>
             </div>
+          </FormGroup>
 
-            <div className="field">
-              <label htmlFor={`answer-description-${answer.id}`}>
-                Description
-                <input
-                  placeholder="Best place ever ❤️"
-                  id={`answer-description-${answer.id}`}
-                  type="textarea"
-                  value={answer.description}
-                  onChange={e =>
-                    updateAnswerDescription(answer.id, e.target.value)
-                  }
-                />
-              </label>
-            </div>
-          </li>
-        ))}
-        <button type="button" className="add-answer" onClick={addAnswer}>
-          +
-        </button>
-      </ul>
-      <div className="field">
-        <button type="submit" className="submit-question">
-          Créer le vote
-        </button>
-      </div>
-    </form>
+          <FormGroup>
+            <AnswersTitle>
+              <span>Réponses</span>
+
+              <FloatingActionButton type="button" onClick={addAnswer}>
+                +
+              </FloatingActionButton>
+            </AnswersTitle>
+
+            <AnswersList>
+              {answers.map((answer, index) => {
+                const answerTitleId = `answer-title-${answer.id}`;
+                const answerDescriptionId = `answer-description-${answer.id}`;
+
+                return (
+                  <li>
+                    <h4>Réponse {index + 1}</h4>
+                    <FloatingLabelInput
+                      id={answerTitleId}
+                      label="Intitulé"
+                      value={answer.title}
+                      onChange={value => updateAnswerTitle(answer.id, value)}
+                    />
+
+                    <FloatingLabelInput
+                      id={answerDescriptionId}
+                      label="Description"
+                      value={answer.description}
+                      onChange={value =>
+                        updateAnswerDescription(answer.id, value)
+                      }
+                    />
+                  </li>
+                );
+              })}
+            </AnswersList>
+
+            <SubmitButton aria-label="Créer le vote">
+              <img src={checkmark} alt="" />
+            </SubmitButton>
+          </FormGroup>
+        </FormLayout>
+      </Card>
+    </PageContent>
   );
 };

@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 
-import { useServices } from "../ServicesProvider/hooks";
+import { Card } from "../../ui/Card/Card";
 import { Question } from "../../models";
+import { useServices } from "../ServicesProvider/hooks";
+import {
+  CardLayout,
+  ChipList,
+  ExpirationDate,
+  QuestionPicture,
+  QuestionsLayout
+} from "./styles";
+import { FloatingActionButton } from "../../ui/FloatingActionButton/FloatingActionButton";
+import moment from "moment";
+import { Chip } from "../../ui/Chip/Chip";
+import { PageContent } from "../../ui/Layout/Layout";
 
 export interface QuestionsListProps {}
 
@@ -22,26 +33,40 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
   const { questions } = useQuestionsListState();
 
   return (
-    <div className="questions-list">
-      <ul>
-        {questions.map(question => (
-          <li key={question.id}>
-            <Link to={`question/${question.id}`}>
-              <div className="question-description">
-                <div className="label">{question.title}</div>
-                <div className="expiration-date">
-                  <span role="img" aria-label="Expiration date">
-                    ⏳
-                  </span>{" "}
-                  {moment(question.endingDate).format("LLL")}
-                </div>
-              </div>
-              <div className="go-to-question"> > </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Link to='/question/new'>+</Link>
-    </div>
+    <PageContent>
+      <QuestionsLayout>
+        <FloatingActionButton>
+          <Link to="/question/new">+</Link>
+        </FloatingActionButton>
+
+        <ol>
+          {questions.map(question => (
+            <li key={question.id}>
+              <Link to={`question/${question.id}`}>
+                <Card>
+                  <CardLayout>
+                    <QuestionPicture
+                      src={`https://api.adorable.io/avatars/100/${question.id}.png`}
+                    />
+
+                    <ChipList>
+                      <Chip>Général</Chip>
+                    </ChipList>
+
+                    <h2>{question.title}</h2>
+
+                    <ExpirationDate>
+                      {moment(question.endingDate)
+                        .startOf("day")
+                        .fromNow()}
+                    </ExpirationDate>
+                  </CardLayout>
+                </Card>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </QuestionsLayout>
+    </PageContent>
   );
 };

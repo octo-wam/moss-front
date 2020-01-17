@@ -3,11 +3,12 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { redirectToLoginPage } from "../../utils/token";
 import { Me } from "../../models";
-import { QuestionsList } from "../QuestionsList";
-import { QuestionDetail } from "../QuestionDetail";
-import { CreateQuestionForm } from '../CreateQuestionForm';
-import { useServices } from "../ServicesProvider";
+import { QuestionsList } from "../QuestionsList/QuestionsList";
+import { QuestionDetail } from "../QuestionDetail/QuestionDetail";
+import { CreateQuestionForm } from "../CreateQuestionForm/CreateQuestionForm";
+import { useServices } from "../ServicesProvider/hooks";
 import { meContext } from "./context";
+import { Header } from "../Header/Header";
 
 export interface AuthProviderProps {}
 
@@ -34,16 +35,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = () => {
 
   return (
     <meContext.Provider value={me}>
-      <Switch>
-        <Route exact path="/questions" render={() => <QuestionsList />} />
-        <Route exact path='/question/new' render={() => <CreateQuestionForm />} />
-        <Route
-          exact
-          path="/question/:id"
-          render={({ match }) => <QuestionDetail id={match.params.id} />}
-        />
-        <Redirect to="/questions" />
-      </Switch>
+      <Header />
+      <main>
+        <Switch>
+          <Route exact path="/questions" render={() => <QuestionsList />} />
+          <Route
+            exact
+            path="/question/new"
+            render={() => <CreateQuestionForm />}
+          />
+          <Route
+            exact
+            path="/question/:id"
+            render={({ match }) => <QuestionDetail id={match.params.id} />}
+          />
+          <Redirect to="/questions" />
+        </Switch>
+      </main>
     </meContext.Provider>
   );
 };

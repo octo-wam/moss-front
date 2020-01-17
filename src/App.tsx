@@ -1,18 +1,13 @@
 import React from "react";
 
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import { AppLayout } from "./components/Layout";
-import { AuthProvider } from "./components/AuthProvider";
+import { Footer } from "./components/Footer/Footer";
+import { AppLayout } from "./ui/Layout/Layout";
+import { AuthProvider } from "./components/AuthProvider/AuthProvider";
 
 const App: React.FC = () => {
   return (
     <AppLayout>
-      <Header />
-
-      <main>
-        <AuthProvider />
-      </main>
+      <AuthProvider />
 
       <Footer />
     </AppLayout>

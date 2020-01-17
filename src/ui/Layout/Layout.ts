@@ -9,5 +9,14 @@ export const AppLayout = styled.div`
   main {
     flex: 1;
     overflow-y: auto;
+    background: var(--color-background-gradient);
   }
+`;
+
+export const PageContent = styled.div`
+  padding: 5rem 0;
+  width: 96%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 `;

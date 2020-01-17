@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import uuid from "uuid/v4";
 
-import { useServices } from "../ServicesProvider";
+import { useServices } from "../ServicesProvider/hooks";
 
 export const useCreateQuestionFormState = () => {
   const [title, setTitle] = useState(""); // initial value
@@ -45,7 +45,7 @@ export const useCreateQuestionFormState = () => {
   }
 
   function updateAnswerDescription(id: string, newDescription: string) {
-    setAnswers(answers => 
+    setAnswers(answers =>
       answers.map(answer => {
         if (answer.id === id) {
           return { ...answer, description: newDescription };

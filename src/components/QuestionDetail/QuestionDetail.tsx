@@ -2,6 +2,22 @@ import React from "react";
 import moment from "moment";
 
 import { useQuestionDetailState } from "./hooks";
+import {
+  QuestionLayout,
+  Picture,
+  Title,
+  Description,
+  ExpirationDate,
+  Answers,
+  ChipList
+} from "./style";
+import { Card } from "../../ui/Card/Card";
+import { RadioOptions } from "../../ui/RadioOptions/RadioOptions";
+import { FloatingActionButton } from "../../ui/FloatingActionButton/FloatingActionButton";
+import checkmark from "./checkmark.svg";
+import { Chip } from "../../ui/Chip/Chip";
+import { AnswerResults } from "../../ui/AnswerResults/AnswerResults";
+import { PageContent } from "../../ui/Layout/Layout";
 
 export interface QuestionDetailProps {
   id: string;
@@ -12,64 +28,66 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
     state,
     setCurrentAnswer,
     submitAnswer,
-    showResults,
     getVoteCountForAnswer
   } = useQuestionDetailState(id);
 
   if (!state.question) {
-    return <p>Loading...</p>;
+    return null;
   }
 
-  const { question, currentAnswer, hasUserVoted, areResultsShown } = state;
+  const { question, currentAnswer, hasUserVoted } = state;
 
   return (
-    <div className="question-detail">
-      <form onSubmit={submitAnswer}>
-        <header>
-          <h2 className="title">{question.title}</h2>
-          <p className="description">{question.description}</p>
-          <p className="ending-date">
-            Expires on {moment(question.endingDate).format("LLL")}
-          </p>
-        </header>
+    <PageContent>
+      <Card>
+        <form onSubmit={submitAnswer}>
+          <QuestionLayout>
+            <Picture
+              src={`https://api.adorable.io/avatars/100/${question.id}.png`}
+            />
 
-        <ul>
-          {question.answers.map(answer => (
-            <li key={answer.id}>
-              <input
-                checked={currentAnswer === answer}
-                onChange={() => setCurrentAnswer(answer)}
-                disabled={hasUserVoted}
-                type="radio"
-                name="answer"
-                id={answer.id}
-                value={answer.id}
-              />
-              <label htmlFor={answer.id}>
-                <span>
-                  {answer.title}{" "}
-                  {(hasUserVoted || areResultsShown) && (
-                    <>({getVoteCountForAnswer(answer)})</>
-                  )}
-                </span>
+            <ChipList>
+              <Chip>Général</Chip>
+            </ChipList>
 
-                <span className="answer-description">
-                  ({answer.description})
-                </span>
-              </label>
-            </li>
-          ))}
-        </ul>
+            <Title>{question.title}</Title>
+            <ExpirationDate>
+              {moment(question.endingDate)
+                .startOf("day")
+                .fromNow()}
+            </ExpirationDate>
+            <Description>{question.description}</Description>
 
-        <footer>
-          <button disabled={!currentAnswer} type="submit">
-            Valider
-          </button>
-          <button type="button" onClick={showResults}>
-            Voir les résultats
-          </button>
-        </footer>
-      </form>
-    </div>
+            <Answers>
+              {hasUserVoted ? (
+                <AnswerResults
+                  answers={question.answers.map(answer => ({
+                    ...answer,
+                    voteCount: getVoteCountForAnswer(answer)
+                  }))}
+                />
+              ) : (
+                <RadioOptions
+                  name="answers"
+                  options={question.answers}
+                  onChange={setCurrentAnswer}
+                  value={currentAnswer}
+                  getOptionId={answer => answer.id}
+                  getOptionLabel={answer => answer.title}
+                />
+              )}
+            </Answers>
+
+            <FloatingActionButton
+              disabled={!currentAnswer}
+              type="submit"
+              aria-label="Répondre à la question"
+            >
+              <img src={checkmark} alt="" />
+            </FloatingActionButton>
+          </QuestionLayout>
+        </form>
+      </Card>
+    </PageContent>
   );
 };
