@@ -6,22 +6,22 @@ import { Me } from "../../models";
 import { QuestionsList } from "../QuestionsList/QuestionsList";
 import { QuestionDetail } from "../QuestionDetail/QuestionDetail";
 import { CreateQuestionForm } from "../CreateQuestionForm/CreateQuestionForm";
-import { useServices } from "../ServicesProvider/hooks";
+import { useService } from "../ServicesProvider/hooks";
 import { meContext } from "./context";
 import { Header } from "../Header/Header";
 
 export interface AuthProviderProps {}
 
 const useAuthProviderState = () => {
-  const services = useServices();
+  const meService = useService("me");
   const [me, setMe] = useState<Me | null>(null);
 
   useEffect(() => {
-    services.me
+    meService
       .fetchMe()
       .then(setMe)
       .catch(redirectToLoginPage);
-  }, [services.me]);
+  }, [meService]);
 
   return { me };
 };

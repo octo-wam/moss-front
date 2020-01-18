@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Card } from "../../ui/Card/Card";
 import { Question } from "../../models";
-import { useServices } from "../ServicesProvider/hooks";
+import { useService, useServices } from "../ServicesProvider/hooks";
 import {
   CardLayout,
   ChipList,
@@ -20,12 +20,12 @@ import Helmet from "react-helmet";
 export interface QuestionsListProps {}
 
 const useQuestionsListState = () => {
-  const services = useServices();
+  const questionService = useService("question");
   const [questions, setQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
-    services.question.fetchQuestions().then(setQuestions);
-  }, [services.question]);
+    questionService.fetchQuestions().then(setQuestions);
+  }, [questionService]);
 
   return { questions };
 };

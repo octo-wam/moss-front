@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { servicesContext } from "./context";
+import { servicesContext, ServicesContext } from "./context";
 
 export const useServices = () => {
   const services = useContext(servicesContext);
@@ -10,4 +10,14 @@ export const useServices = () => {
   }
 
   return services;
+};
+
+type ServiceName = keyof ServicesContext;
+
+export const useService = <T extends ServiceName>(
+  serviceName: T
+): ServicesContext[T] => {
+  const services = useServices();
+
+  return services[serviceName];
 };

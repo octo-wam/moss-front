@@ -1,19 +1,20 @@
 import { useReducer, useEffect } from "react";
 
 import { Answer } from "../../models";
-import { useServices } from "../ServicesProvider/hooks";
+import { useService } from "../ServicesProvider/hooks";
 import { useMe } from "../AuthProvider/hooks";
 import { questionDetailReducer, initialState } from "./reducer";
 
 export const useQuestionDetailState = (id: string) => {
   const [state, dispatch] = useReducer(questionDetailReducer, initialState);
-  const services = useServices();
+  const questionService = useService("question");
+  const voteService = useService("vote");
   const me = useMe();
 
   useEffect(() => {
     Promise.all([
-      services.question.fetchQuestion(id),
-      services.vote.fetchVotesByQuestionId(id)
+      questionService.fetchQuestion(id),
+      voteService.fetchVotesByQuestionId(id)
     ]).then(([question, votes]) => {
       const userVote = votes.find(({ user }) => user.id === me.id) || null;
       const currentAnswer = userVote
@@ -28,7 +29,7 @@ export const useQuestionDetailState = (id: string) => {
         question
       });
     });
-  }, [id, me.id, services.question, services.vote]);
+  }, [id, me.id, questionService, voteService]);
 
   async function submitAnswer(e: React.FormEvent) {
     e.preventDefault();
@@ -37,7 +38,7 @@ export const useQuestionDetailState = (id: string) => {
       return;
     }
 
-    await services.vote.createVoteByQuestionId(id, state.currentAnswer.id);
+    await voteService.createVoteByQuestionId(id, state.currentAnswer.id);
 
     dispatch({
       type: "VOTE",
