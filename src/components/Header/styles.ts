@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import mossLogo from "./logo.svg";
+import mossLogo from "../../assets/logo.svg";
 import { BREAKPOINT_TABLET } from "../../ui/Theme/Theme";
 
 export const HeaderLayout = styled.header`

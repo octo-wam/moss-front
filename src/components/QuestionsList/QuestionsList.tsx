@@ -15,6 +15,7 @@ import { FloatingActionButton } from "../../ui/FloatingActionButton/FloatingActi
 import moment from "moment";
 import { Chip } from "../../ui/Chip/Chip";
 import { PageContent } from "../../ui/Layout/Layout";
+import Helmet from "react-helmet";
 
 export interface QuestionsListProps {}
 
@@ -33,40 +34,45 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
   const { questions } = useQuestionsListState();
 
   return (
-    <PageContent>
-      <QuestionsLayout>
-        <FloatingActionButton>
-          <Link to="/question/new">+</Link>
-        </FloatingActionButton>
+    <>
+      <Helmet>
+        <title>Moss | Octo</title>
+      </Helmet>
+      <PageContent>
+        <QuestionsLayout>
+          <FloatingActionButton>
+            <Link to="/question/new">+</Link>
+          </FloatingActionButton>
 
-        <ol>
-          {questions.map(question => (
-            <li key={question.id}>
-              <Link to={`question/${question.id}`}>
-                <Card>
-                  <CardLayout>
-                    <QuestionPicture
-                      src={`https://api.adorable.io/avatars/100/${question.id}.png`}
-                    />
+          <ol>
+            {questions.map(question => (
+              <li key={question.id}>
+                <Link to={`question/${question.id}`}>
+                  <Card>
+                    <CardLayout>
+                      <QuestionPicture
+                        src={`https://api.adorable.io/avatars/100/${question.id}.png`}
+                      />
 
-                    <ChipList>
-                      <Chip>Général</Chip>
-                    </ChipList>
+                      <ChipList>
+                        <Chip>Général</Chip>
+                      </ChipList>
 
-                    <h2>{question.title}</h2>
+                      <h2>{question.title}</h2>
 
-                    <ExpirationDate>
-                      {moment(question.endingDate)
-                        .startOf("day")
-                        .fromNow()}
-                    </ExpirationDate>
-                  </CardLayout>
-                </Card>
-              </Link>
-            </li>
-          ))}
-        </ol>
-      </QuestionsLayout>
-    </PageContent>
+                      <ExpirationDate>
+                        {moment(question.endingDate)
+                          .startOf("day")
+                          .fromNow()}
+                      </ExpirationDate>
+                    </CardLayout>
+                  </Card>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </QuestionsLayout>
+      </PageContent>
+    </>
   );
 };
