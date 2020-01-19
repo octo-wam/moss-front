@@ -4,7 +4,6 @@ interface State {
   question: Question | null;
   currentAnswer: Answer | null;
   hasUserVoted: boolean;
-  areResultsShown: boolean;
   allVotes: Vote[];
 }
 
@@ -14,10 +13,6 @@ interface InitAction {
   currentAnswer: Answer | null;
   allVotes: Vote[];
   hasUserVoted: boolean;
-}
-
-interface ShowResultsAction {
-  type: "SHOW_RESULTS";
 }
 
 interface SetCurrentAction {
@@ -30,13 +25,12 @@ interface VoteAction {
   me: Me;
 }
 
-type Action = InitAction | ShowResultsAction | SetCurrentAction | VoteAction;
+type Action = InitAction | SetCurrentAction | VoteAction;
 
 export const initialState: State = {
   question: null,
   currentAnswer: null,
   hasUserVoted: false,
-  areResultsShown: false,
   allVotes: []
 };
 
@@ -47,7 +41,6 @@ export function questionDetailReducer(state: State, action: Action): State {
         question: action.question,
         currentAnswer: action.currentAnswer,
         hasUserVoted: action.hasUserVoted,
-        areResultsShown: false,
         allVotes: action.allVotes
       };
 
@@ -57,17 +50,10 @@ export function questionDetailReducer(state: State, action: Action): State {
         currentAnswer: action.answer
       };
 
-    case "SHOW_RESULTS":
-      return {
-        ...state,
-        areResultsShown: true
-      };
-
     case "VOTE":
       return {
         ...state,
         hasUserVoted: true,
-        areResultsShown: true,
         allVotes: [
           ...state.allVotes,
           {

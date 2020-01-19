@@ -1,17 +1,27 @@
-import octoLogo from "./octo-logo.svg";
 import React from "react";
+import { HeaderLayout, LogoMoss, UserAvatar, UserLayout } from "./styles";
+import { useMe } from "../AuthProvider/hooks";
+import { PageContent } from "../../ui/Layout/Layout";
+import { Link } from "react-router-dom";
 
 export interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
+  const me = useMe();
+
   return (
-    <div className="header">
-      <h1 className="header-acronym" aria-label="Moss">
-        <span>M</span>
-        <img src={octoLogo} alt="O" />
-        <span>SS</span>
-      </h1>
-      <div className="header-def">Massive Online Simple Sociocracy</div>
-    </div>
+    <HeaderLayout>
+      <PageContent>
+        <Link to="/">
+          <LogoMoss role="heading" aria-level={1} alt="Accueil" />
+        </Link>
+        <UserLayout>
+          <UserAvatar
+            src={`https://api.adorable.io/avatars/100/${me.id}.png`}
+          />
+          <p>{me.name}</p>
+        </UserLayout>
+      </PageContent>
+    </HeaderLayout>
   );
 };

@@ -1,20 +1,16 @@
 import React from "react";
 
-import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { AuthProvider } from "./components/AuthProvider";
+import { AppLayout } from "./ui/Layout/Layout";
+import { AuthProvider } from "./components/AuthProvider/AuthProvider";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Header />
-
-      <div className="content">
-        <AuthProvider />
-      </div>
+    <AppLayout>
+      <AuthProvider />
 
       <Footer />
-    </div>
+    </AppLayout>
   );
 };
 

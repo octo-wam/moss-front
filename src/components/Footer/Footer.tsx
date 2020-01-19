@@ -1,16 +1,17 @@
 import React from "react";
+import { FooterLayout, Heart, TribesNames } from "./styles";
 
 export interface FooterProps {}
 
 export const Footer: React.FC<FooterProps> = () => {
   return (
-    <div className="footer">
-      <div>Made with love by</div>
+    <FooterLayout>
+      <p>Made with love by</p>
       <div>
-        <span className="heart">♥</span>
-        <span className="tribes-names"> MOB - WEBF - WOAPI </span>
-        <span className="heart">♥</span>
+        <Heart />
+        <TribesNames> MOB - WEBF - WOAPI </TribesNames>
+        <Heart />
       </div>
-    </div>
+    </FooterLayout>
   );
 };

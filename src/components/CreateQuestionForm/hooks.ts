@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import uuid from "uuid/v4";
 
-import { useServices } from "../ServicesProvider";
+import { useService } from "../ServicesProvider/hooks";
 
 export const useCreateQuestionFormState = () => {
   const [title, setTitle] = useState(""); // initial value
   const [description, setDescription] = useState(""); // initial value
   const [endingDate, setEndingDate] = useState(""); // initial value
 
-  const services = useServices();
+  const questionService = useService("question");
   const history = useHistory();
   const [answers, setAnswers] = useState([
     {
@@ -27,7 +27,7 @@ export const useCreateQuestionFormState = () => {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    services.question
+    questionService
       .createQuestion({ title, description, endingDate, answers })
       .then(() => history.push("/questions"));
   }
@@ -45,7 +45,7 @@ export const useCreateQuestionFormState = () => {
   }
 
   function updateAnswerDescription(id: string, newDescription: string) {
-    setAnswers(answers => 
+    setAnswers(answers =>
       answers.map(answer => {
         if (answer.id === id) {
           return { ...answer, description: newDescription };
