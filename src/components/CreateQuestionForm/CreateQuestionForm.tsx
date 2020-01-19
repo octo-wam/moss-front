@@ -46,6 +46,7 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
                 label="Question"
                 value={title}
                 onChange={setTitle}
+                required={true}
               />
             </FormGroup>
 
@@ -90,10 +91,12 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
                   return (
                     <li>
                       <h4>Réponse {index + 1}</h4>
+
                       <FloatingLabelInput
                         id={answerTitleId}
                         label="Intitulé"
                         value={answer.title}
+                        required={true}
                         onChange={value => updateAnswerTitle(answer.id, value)}
                       />
 
@@ -110,8 +113,8 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
                 })}
               </AnswersList>
 
-              <SubmitButton aria-label="Créer le vote">
-                <img src={checkmark} alt="" />
+              <SubmitButton>
+                <img src={checkmark} alt="Créer le vote" />
               </SubmitButton>
             </FormGroup>
           </FormLayout>
