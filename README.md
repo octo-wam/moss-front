@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.com/octo-wam/moss-front.svg?branch=master)](https://travis-ci.com/octo-wam/moss-front)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6a2d1ce1-1393-4ce3-b89c-d7d5ca98ff32/deploy-status)](https://app.netlify.com/sites/octo-moss/deploys)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
