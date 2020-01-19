@@ -2,30 +2,31 @@ import React from "react";
 import { LabelLayout } from "./styles";
 import { Input } from "../Form/Input";
 
-export interface FloatingLabelInputProps {
+export interface DatePickerProps {
   id: string;
-  label: string;
   value: string;
-  onChange: (value: string) => void;
+  onChange: (date: string) => void;
+  label: string;
   required?: boolean;
 }
 
-export const FloatingLabelInput: React.FC<FloatingLabelInputProps> = ({
+export const DatePicker: React.FC<DatePickerProps> = ({
   id,
-  label,
   value,
-  required = false,
-  onChange
+  onChange,
+  label,
+  required = false
 }) => (
   <LabelLayout htmlFor={id}>
     <Input
-      type="text"
+      type="datetime-local"
       id={id}
       name={id}
       value={value}
       onChange={e => onChange(e.target.value)}
       required={required}
     />
+
     <span>{label}</span>
   </LabelLayout>
 );

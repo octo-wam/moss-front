@@ -14,6 +14,7 @@ import { FloatingLabelInput } from "../../ui/FloatingLabelInput/FloatingLabelInp
 import { FloatingActionButton } from "../../ui/FloatingActionButton/FloatingActionButton";
 import checkmark from "../../assets/checkmark.svg";
 import { PageContent } from "../../ui/Layout/Layout";
+import { DatePicker } from "../../ui/DatePicker/DatePicker";
 
 export interface CreateQuestionPayload {}
 
@@ -60,18 +61,13 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
             </FormGroup>
 
             <FormGroup>
-              <div className="field">
-                <label htmlFor="endingDate">
-                  Date de fin
-                  <input
-                    type="datetime-local"
-                    id="endingDate"
-                    name="meeting-time"
-                    value={endingDate}
-                    onChange={e => setEndingDate(e.target.value)}
-                  />
-                </label>
-              </div>
+              <DatePicker
+                id="endingDate"
+                label="Date de fin"
+                value={endingDate}
+                onChange={setEndingDate}
+                required={true}
+              />
             </FormGroup>
 
             <FormGroup>
