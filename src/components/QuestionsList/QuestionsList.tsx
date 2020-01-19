@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 
 import { Card } from "../../ui/Card/Card";
 import { Question } from "../../models";
-import { useService, useServices } from "../ServicesProvider/hooks";
+import { useService } from "../ServicesProvider/hooks";
 import {
   CardLayout,
   ChipList,
   ExpirationDate,
+  QuestionItem,
   QuestionPicture,
   QuestionsLayout
 } from "./styles";
-import { FloatingActionButton } from "../../ui/FloatingActionButton/FloatingActionButton";
+import { FloatingActionButtonLink } from "../../ui/FloatingActionButton/FloatingActionButton";
 import moment from "moment";
 import { Chip } from "../../ui/Chip/Chip";
 import { PageContent } from "../../ui/Layout/Layout";
@@ -40,13 +41,13 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
       </Helmet>
       <PageContent>
         <QuestionsLayout>
-          <FloatingActionButton>
-            <Link to="/question/new">+</Link>
-          </FloatingActionButton>
+          <FloatingActionButtonLink to="/question/new">
+            <span>+</span>
+          </FloatingActionButtonLink>
 
           <ol>
             {questions.map(question => (
-              <li key={question.id}>
+              <QuestionItem key={question.id}>
                 <Link to={`question/${question.id}`}>
                   <Card>
                     <CardLayout>
@@ -68,7 +69,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                     </CardLayout>
                   </Card>
                 </Link>
-              </li>
+              </QuestionItem>
             ))}
           </ol>
         </QuestionsLayout>

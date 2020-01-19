@@ -6,7 +6,7 @@ export const QuestionsLayout = styled.div`
   display: grid;
   grid-gap: 3.5rem;
 
-  button {
+  .floating-action-button {
     position: fixed;
     top: 4.5rem;
     left: 50%;
@@ -62,4 +62,22 @@ export const ExpirationDate = styled.p`
 
   color: var(--color-text-light);
   font-size: 1.2rem;
+`;
+
+export const QuestionItem = styled.li`
+  > a {
+    display: block;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+  }
+
+  > a:hover,
+  > a:focus {
+    transform: scale(1.05);
+  }
+
+  > a:focus {
+    outline: 1px dotted #212121;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
 `;

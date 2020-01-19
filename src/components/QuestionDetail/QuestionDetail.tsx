@@ -83,13 +83,15 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
                 )}
               </Answers>
 
-              <FloatingActionButton
-                disabled={!currentAnswer}
-                type="submit"
-                aria-label="Répondre à la question"
-              >
-                <img src={checkmark} alt="" />
-              </FloatingActionButton>
+              {!hasUserVoted && (
+                <FloatingActionButton
+                  disabled={!currentAnswer}
+                  type="submit"
+                  aria-label="Répondre à la question"
+                >
+                  <img src={checkmark} alt="" />
+                </FloatingActionButton>
+              )}
             </QuestionLayout>
           </form>
         </Card>

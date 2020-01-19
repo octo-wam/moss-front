@@ -12,8 +12,8 @@ export const Header: React.FC<HeaderProps> = () => {
   return (
     <HeaderLayout>
       <PageContent>
-        <Link role="heading" aria-level={1} to="/" aria-label="Accueil">
-          <LogoMoss />
+        <Link to="/">
+          <LogoMoss role="heading" aria-level={1} alt="Accueil" />
         </Link>
         <UserLayout>
           <UserAvatar

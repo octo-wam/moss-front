@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const FloatingActionButton = styled.button`
+export const FloatingActionButton = styled.button.attrs({
+  className: "floating-action-button"
+})`
   all: unset;
 
   display: flex;
@@ -14,12 +17,17 @@ export const FloatingActionButton = styled.button`
   color: var(--color-text-reverse);
   font-weight: 400;
   font-size: 4rem;
+  font-family: monospace;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  text-decoration: none;
 
-  a {
-    text-decoration: none;
-    color: inherit;
-    font-family: monospace;
+  &:focus {
+    outline: 1px dotted #212121;
+    outline: 5px auto -webkit-focus-ring-color;
   }
 `;
+
+export const FloatingActionButtonLink = FloatingActionButton.withComponent(
+  Link
+);
