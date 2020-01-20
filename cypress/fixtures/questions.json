@@ -1,0 +1,43 @@
+[
+  {
+    "id": "question-1",
+    "title": "Quel nom pour la league ?",
+    "description": "Il faut choisir 😘",
+    "endingDate": "2020-01-10T14:30:00.000Z",
+    "answers": [
+      {
+        "id": "answer-1",
+        "title": "WAM",
+        "description": "Web Api Mobile"
+      },
+      {
+        "id": "answer-2",
+        "title": "FAME",
+        "description": "Front Api Mobile Experience"
+      }
+    ]
+  },
+  {
+    "id": "question-2",
+    "title": "Quelle est la couleur du cheval blanc d'Henry 4 ?",
+    "description": "C'est pas simple...",
+    "endingDate": "2020-01-16T18:00:00.000Z",
+    "answers": [
+      {
+        "id": "answer-3",
+        "title": "Blanc",
+        "description": ""
+      },
+      {
+        "id": "answer-4",
+        "title": "Noir",
+        "description": ""
+      },
+      {
+        "id": "answer-5",
+        "title": "Vert",
+        "description": ""
+      }
+    ]
+  }
+]
