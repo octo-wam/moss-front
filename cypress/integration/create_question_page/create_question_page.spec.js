@@ -20,8 +20,8 @@ describe("Create question page", () => {
     cy.server();
     cy.route("GET", "/api/v1/me", "fixture:me");
     cy.route("POST", "/api/v1/questions", "fixture:create_question");
-    cy.visit("/question/new#access_token=test-token");
     cy.route("GET", "/api/v1/questions", "fixture:questions");
+    cy.visit("/question/new#access_token=test-token");
   });
 
   it("Renders a form to create the question", () => {
