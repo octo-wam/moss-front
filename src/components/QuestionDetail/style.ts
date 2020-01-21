@@ -33,7 +33,7 @@ export const Picture = styled.img`
   align-self: start;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   grid-row: 2;
   grid-column: 2 / span 2;
 

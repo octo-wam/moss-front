@@ -1,0 +1,23 @@
+{
+  "id": "question-2",
+  "title": "Quelle est la couleur du cheval blanc d'Henry 4 ?",
+  "description": "C'est pas simple...",
+  "endingDate": "2020-01-16T18:00:00.000Z",
+  "answers": [
+    {
+      "id": "answer-3",
+      "title": "Blanc",
+      "description": ""
+    },
+    {
+      "id": "answer-4",
+      "title": "Noir",
+      "description": ""
+    },
+    {
+      "id": "answer-5",
+      "title": "Vert",
+      "description": ""
+    }
+  ]
+}

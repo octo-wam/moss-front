@@ -1,7 +1,20 @@
 language: node_js
 node_js:
   - "stable"
-cache: yarn
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+cache:
+  - yarn: true
+  - directories:
+      - ~/.cache
+install:
+  - yarn global add codecov
+  - yarn
 script:
   - yarn test
+  - mkdir .nyc_output && echo "{}" > .nyc_output/out.json
+  - yarn test:ui
   - yarn run build
+  - codecov

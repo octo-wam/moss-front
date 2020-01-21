@@ -3,8 +3,11 @@ import { BREAKPOINT_TABLET } from "../../ui/Theme/Theme";
 
 export const QuestionsLayout = styled.div`
   position: relative;
-  display: grid;
-  grid-gap: 3.5rem;
+
+  ol {
+    display: grid;
+    grid-gap: 3.5rem;
+  }
 
   .floating-action-button {
     position: fixed;

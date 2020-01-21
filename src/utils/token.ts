@@ -5,6 +5,7 @@ function getTokenFromUrl() {
 
   return searchParams.get("#access_token");
 }
+
 function getTokenFromLocalStorage() {
   return window.localStorage.getItem(OAUTH_KEY_STORAGE_KEY);
 }

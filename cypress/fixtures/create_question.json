@@ -1,0 +1,18 @@
+{
+  "id": "question-1",
+  "title": "Quel nom pour la league ?",
+  "description": "Il faut choisir 😘",
+  "endingDate": "2020-01-10T14:30:00.000Z",
+  "answers": [
+    {
+      "id": "answer-1",
+      "title": "WAM",
+      "description": "Web Api Mobile"
+    },
+    {
+      "id": "answer-2",
+      "title": "FAME",
+      "description": "Front Api Mobile Experience"
+    }
+  ]
+}

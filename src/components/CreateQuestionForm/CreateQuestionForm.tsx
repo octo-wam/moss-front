@@ -74,7 +74,11 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
               <AnswersTitle>
                 <span>Réponses</span>
 
-                <FloatingActionButton type="button" onClick={addAnswer}>
+                <FloatingActionButton
+                  type="button"
+                  onClick={addAnswer}
+                  aria-label="Ajouter une réponse"
+                >
                   +
                 </FloatingActionButton>
               </AnswersTitle>
@@ -83,10 +87,11 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
                 {answers.map((answer, index) => {
                   const answerTitleId = `answer-title-${answer.id}`;
                   const answerDescriptionId = `answer-description-${answer.id}`;
+                  const title = `Réponse ${index + 1}`;
 
                   return (
-                    <li>
-                      <h4>Réponse {index + 1}</h4>
+                    <li role="group" aria-label={title}>
+                      <h4>{title}</h4>
 
                       <FloatingLabelInput
                         id={answerTitleId}
@@ -110,7 +115,7 @@ export const CreateQuestionForm: React.FC<CreateQuestionPayload> = () => {
               </AnswersList>
 
               <SubmitButton>
-                <img src={checkmark} alt="Créer le vote" />
+                <img src={checkmark} alt="Créer la question" />
               </SubmitButton>
             </FormGroup>
           </FormLayout>

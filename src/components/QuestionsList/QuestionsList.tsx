@@ -41,7 +41,10 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
       </Helmet>
       <PageContent>
         <QuestionsLayout>
-          <FloatingActionButtonLink to="/question/new">
+          <FloatingActionButtonLink
+            to="/question/new"
+            aria-label="Créer une question"
+          >
             <span>+</span>
           </FloatingActionButtonLink>
 

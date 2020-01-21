@@ -1,0 +1,20 @@
+[
+  {
+    "answerId": "answer-2",
+    "user": {
+      "id": "user-1"
+    }
+  },
+  {
+    "answerId": "answer-1",
+    "user": {
+      "id": "user-2"
+    }
+  },
+  {
+    "answerId": "answer-1",
+    "user": {
+      "id": "user-3"
+    }
+  }
+]

@@ -5,6 +5,10 @@ export const RadioOptionsLayout = styled.div`
     margin-top: 1rem;
   }
 
+  label {
+    display: block;
+  }
+
   label span {
     display: flex;
     align-items: center;
