@@ -12,7 +12,6 @@ function getTokenFromLocalStorage() {
 
 export function getOauthTokenOrRedirect(): string {
   const tokenFromUrl = getTokenFromUrl();
-
   if (tokenFromUrl) {
     window.localStorage.setItem(OAUTH_KEY_STORAGE_KEY, tokenFromUrl);
     return tokenFromUrl;
@@ -35,7 +34,7 @@ export const LOGIN_PAGE_URL =
   "https://octo-moss-back.herokuapp.com/auth/google_oauth2";
 
 export function redirectToLoginPage() {
-  window.location.href = LOGIN_PAGE_URL;
+  window.location.href = `${LOGIN_PAGE_URL}?redirect_to=${window.location.href}`;
 }
 
 export function clearOauthToken() {
