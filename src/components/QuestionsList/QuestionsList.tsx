@@ -71,7 +71,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                           .fromNow()}
                       </ExpirationDate>
                       <AuthorName>
-                        Question de <span>{question.user_name}</span>
+                        Postée par <span>{question.user_name}</span>
                       </AuthorName>
                     </CardLayout>
                   </Card>

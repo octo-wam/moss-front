@@ -94,7 +94,7 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
                 </FloatingActionButton>
               )}
               <AuthorName>
-                Question de <span>{question.user_name}</span>
+                Postée par <span>{question.user_name}</span>
               </AuthorName>
             </QuestionLayout>
           </form>
