@@ -1,6 +1,8 @@
 export interface Question {
   id: string;
   title: string;
+  user_name: string;
+  user_id: string;
   description: string;
   endingDate: string;
   answers: Answer[];
