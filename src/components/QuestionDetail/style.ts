@@ -17,6 +17,18 @@ export const QuestionLayout = styled.div`
   }
 `;
 
+export const AuthorName = styled.p`
+  grid-column: 3;
+  grid-row: end;
+
+  color: var(--color-text-light);
+  font-size: 1.2rem;
+
+  span {
+    font-weight: bold;
+  }
+`;
+
 export const ChipList = styled.ul`
   grid-column: 2;
   grid-row: 1;
@@ -50,6 +62,7 @@ export const Description = styled.p`
 export const ExpirationDate = styled.p`
   grid-row: 1;
   grid-column: 3;
+  justify-self: end;
 
   color: var(--color-text-light);
 `;

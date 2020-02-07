@@ -6,6 +6,8 @@ export function aQuestion(id: string): Question {
     title: "Quel nom pour la league?",
     description: "Il faut choisir",
     endingDate: "2019-11-08T13:45:01+00:00",
+    user_name: "Test User",
+    user_id: "208294780284604222681",
     answers: [
       {
         id: "1",

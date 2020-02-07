@@ -58,6 +58,17 @@ export const ChipList = styled.ul`
   grid-row: 1;
 `;
 
+export const AuthorName = styled.p`
+  grid-column: 3;
+
+  color: var(--color-text-light);
+  font-size: 1.2rem;
+
+  span {
+    font-weight: bold;
+  }
+`;
+
 export const ExpirationDate = styled.p`
   grid-row: 1;
   grid-column: 3;

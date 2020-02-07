@@ -5,6 +5,7 @@ import { Card } from "../../ui/Card/Card";
 import { Question } from "../../models";
 import { useService } from "../ServicesProvider/hooks";
 import {
+  AuthorName,
   CardLayout,
   ChipList,
   ExpirationDate,
@@ -69,6 +70,9 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                           .startOf("day")
                           .fromNow()}
                       </ExpirationDate>
+                      <AuthorName>
+                        Question de <span>{question.user_name}</span>
+                      </AuthorName>
                     </CardLayout>
                   </Card>
                 </Link>

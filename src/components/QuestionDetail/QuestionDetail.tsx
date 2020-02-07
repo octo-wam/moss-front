@@ -9,7 +9,8 @@ import {
   Description,
   ExpirationDate,
   Answers,
-  ChipList
+  ChipList,
+  AuthorName
 } from "./style";
 import { Card } from "../../ui/Card/Card";
 import { RadioOptions } from "../../ui/RadioOptions/RadioOptions";
@@ -92,6 +93,9 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
                   <img src={checkmark} alt="" />
                 </FloatingActionButton>
               )}
+              <AuthorName>
+                Question de <span>{question.user_name}</span>
+              </AuthorName>
             </QuestionLayout>
           </form>
         </Card>
