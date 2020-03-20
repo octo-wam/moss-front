@@ -1,9 +1,9 @@
-# Wam MOSS front
+# WAM MOSS front
 
 [![Build Status](https://travis-ci.com/octo-wam/moss-front.svg?branch=master)](https://travis-ci.com/octo-wam/moss-front)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6a2d1ce1-1393-4ce3-b89c-d7d5ca98ff32/deploy-status)](https://app.netlify.com/sites/octo-moss/deploys)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![eslint](https://img.shields.io/badge/eslint-v6.5.1-green)](./)
+[![eslint](https://img.shields.io/badge/eslint-v6.5.1-green)](https://prettier.io)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![commitlint](https://img.shields.io/badge/commitlint-v8.1.0-green)](https://www.npmjs.com/package/commitlint)
 [![huky](https://img.shields.io/badge/husyk-v3.0.8-blue)](https://www.npmjs.com/package/husky)
@@ -88,7 +88,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 #### yarn lint
 
-[![eslint](https://img.shields.io/badge/eslint-v6.5.1-green)](./)
+[![eslint](https://img.shields.io/badge/eslint-v6.5.1-green)](https://eslint.org)
 
 Launches the lint checks and prettier formating on the whole project.
 
@@ -108,13 +108,13 @@ See [Contributing guidelines](./CONTRIBUTING.md)
 
 ## VSCode plugins
 
-- [Prettier](./)
-- [Sass Formatter](./)
-- [TypeScript Import Sorter](./)
-- [ESLint](./)
-- [Markdown Lint](./)
-- [Jest](./)
-- [Jest Runner](./)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Sass Formatter](https://marketplace.visualstudio.com/items?itemName=sasa.vscode-sass-format)
+- [TypeScript Import Sorter](https://marketplace.visualstudio.com/items?itemName=mike-co.import-sorter)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+- [Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest)
+- [Jest Runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner)
 
 ## Learn More
 
