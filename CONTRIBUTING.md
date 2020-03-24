@@ -12,7 +12,7 @@ We gratefully welcome improvements to documentation as well as to code.
 
 ### Prerequisite
 
-- [![node](https://img.shields.io/badge/node-v10.16.0-blue)](./)
+- [![node](https://img.shields.io/badge/node-v13.11.0-blue)](./)
 
 - :information_source: read [this documentation](./)
 

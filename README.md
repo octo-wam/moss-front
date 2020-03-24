@@ -16,7 +16,7 @@ This section is **in progress**
 
 ## Prerequisites
 
-- `Nodejs XX.XX.X` or higher is installed on your desktop **WIP**
+- `Nodejs 13.11.0` or higher is installed on your desktop
 
 ## Installation
 
