@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "24.0.22",
-    "@types/node": "12.12.6",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.4",
     "@types/uuid": "^3.4.6",
@@ -23,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:instrument": "react-scripts -r @cypress/instrument-cra start",
+    "lint:fix": "eslint --fix --ext .ts,.js,.tsx src",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -47,29 +46,43 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-angular": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
     "@cypress/code-coverage": "^1.10.4",
     "@cypress/instrument-cra": "^1.0.0",
     "@types/axios": "^0.14.0",
+    "@types/jest": "24.0.22",
+    "@types/node": "^13.9.1",
     "@types/react-helmet": "^5.0.15",
     "@types/react-router-dom": "^5.1.2",
     "@types/styled-components": "^4.4.2",
     "cypress": "^3.8.2",
     "husky": ">=1",
     "istanbul-lib-coverage": "^3.0.0",
-    "lint-staged": ">=8",
+    "lint-staged": "^10.0.8",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "start-server-and-test": "^1.10.6"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "tsc && lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "*.{js,css,json,md}": [
-      "prettier --write",
+    "src/**/*.{ts,js,json,scss,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
       "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   }
 }
