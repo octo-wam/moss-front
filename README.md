@@ -4,6 +4,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing
+
+- Install Node v14.0.0 (or another compatible version):
+
+  - [Install nvm](https://github.com/nvm-sh/nvm)
+  - Install version: `nvm install 14.0.0`
+  - Use version: `nvm use 14.0.0`
+
+- Install dependencies : `yarn install`
+
+# Set environment variables
+
+Add [moss back server url](https://github.com/octo-wam/moss-back) as environment variable: `export REACT_APP_API_URL='http://localhost:3000/api/v1/'`
+
 ## Available Scripts
 
 In the project directory, you can run:
