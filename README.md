@@ -7,16 +7,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installing
 
 - Install Node v14.0.0 (or another compatible version):
-
   - [Install nvm](https://github.com/nvm-sh/nvm)
   - Install version: `nvm install 14.0.0`
   - Use version: `nvm use 14.0.0`
-
 - Install dependencies : `yarn install`
 
 # Set environment variables
 
-Add [moss back server url](https://github.com/octo-wam/moss-back) as environment variable: `export REACT_APP_API_URL='http://localhost:3000/api/v1/'`
+- Create `.env` file from `.env.example` and fill the values thanks to a teammate
+
+# Run back server
+
+- App needs api running: [moss back server url](https://github.com/octo-wam/moss-back)
 
 ## Available Scripts
 
