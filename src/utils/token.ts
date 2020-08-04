@@ -4,6 +4,7 @@ const { NODE_ENV } = process.env
 if (!NODE_ENV) {
   throw new Error('The NODE_ENV environment variable is required but was not specified.')
 }
+const isProdEnv = NODE_ENV === 'production';
 
 function getTokenFromUrl() {
   const searchParams = new URLSearchParams(document.location.hash);
@@ -34,13 +35,10 @@ export function getOauthTokenOrRedirect(): string {
   // will be redirected first
   return "";
 }
-const isDevEnv = NODE_ENV === 'development';
 
-export const LOGIN_PAGE_URL = isDevEnv ? "http://localhost:3000/auth/google_oauth2" : "https://octo-moss-back.herokuapp.com/auth/google_oauth2";
+const AUTH_BASE_URL = isProdEnv ? process.env.REACT_APP_OTHER_BASE_URL : process.env.REACT_APP_LOCAL_BASE_URL;
 
-console.log('LOGIN_PAGE_URL', LOGIN_PAGE_URL);
-console.log('isDevEnv', isDevEnv);
-
+const LOGIN_PAGE_URL = `${AUTH_BASE_URL}/auth/google_oauth2`
 
 export function redirectToLoginPage() {
   window.location.href = `${LOGIN_PAGE_URL}?redirect_to=${window.location.href}`;
