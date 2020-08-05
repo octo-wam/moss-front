@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Set environment variables
 
-- Create `.env` file from `.env.example` and fill the values thanks to a teammate
+- Create `.env` file from `.env.sample` and fill the values thanks to a teammate
 
 # Run back server
 
