@@ -4,6 +4,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing
+
+- Install Node v14.0.0 (or another compatible version):
+  - [Install nvm](https://github.com/nvm-sh/nvm)
+  - Install version: `nvm install 14.0.0`
+  - Use version: `nvm use 14.0.0`
+- Install dependencies : `yarn install`
+
+# Set environment variables
+
+- Create `.env` file from `.env.example` and fill the values thanks to a teammate
+
+# Run back server
+
+- App needs api running: [moss back server url](https://github.com/octo-wam/moss-back)
+
 ## Available Scripts
 
 In the project directory, you can run:
