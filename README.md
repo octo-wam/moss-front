@@ -7,14 +7,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installing
 
 - Install Node v14.0.0 (or another compatible version):
+
   - [Install nvm](https://github.com/nvm-sh/nvm)
   - Install version: `nvm install 14.0.0`
   - Use version: `nvm use 14.0.0`
+
 - Install dependencies : `yarn install`
 
 # Set environment variables
 
-- Create `.env` file from `.env.example` and fill the values thanks to a teammate
+- Create `.env` file from `.env.sample` and fill the values thanks to a teammate
 
 # Run back server
 
