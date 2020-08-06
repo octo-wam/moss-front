@@ -30,11 +30,7 @@ export function getOauthTokenOrRedirect(): string {
   return "";
 }
 
-const appBackBaseUrl = process.env.REACT_APP_BACK_BASE_URL
-const LOGIN_PAGE_URL = `${process.env.REACT_APP_BACK_BASE_URL}/auth/google_oauth2`
-
-console.log('LOGIN_PAGE_URL');
-
+const LOGIN_PAGE_URL = `${process.env.REACT_APP_BACK_BASE_URL}/auth/google_oauth2`;
 
 export function redirectToLoginPage() {
   window.location.href = `${LOGIN_PAGE_URL}?redirect_to=${window.location.href}`;
