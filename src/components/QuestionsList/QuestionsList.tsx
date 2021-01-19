@@ -70,8 +70,8 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                           .startOf("day")
                           .fromNow()}
                       </ExpirationDate>
-                      <AuthorName>
-                        Postée par <span>{question.user_name}</span>
+                      <AuthorName data-cy="author-name">
+                        Postée par <span>{question.user.name}</span>
                       </AuthorName>
                     </CardLayout>
                   </Card>

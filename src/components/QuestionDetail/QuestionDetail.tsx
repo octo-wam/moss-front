@@ -93,8 +93,8 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
                   <img src={checkmark} alt="" />
                 </FloatingActionButton>
               )}
-              <AuthorName>
-                Postée par <span>{question.user_name}</span>
+              <AuthorName data-cy="author-name">
+                Postée par <span>{question.user.name}</span>
               </AuthorName>
             </QuestionLayout>
           </form>

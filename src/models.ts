@@ -1,10 +1,15 @@
+export interface User {
+  id: string;
+  name: string;
+  photo: string | null;
+}
+
 export interface Question {
   id: string;
   title: string;
-  user_name: string;
-  user_id: string;
   description: string;
   endingDate: string;
+  user: User;
   answers: Answer[];
 }
 
