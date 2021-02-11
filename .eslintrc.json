@@ -1,4 +1,5 @@
 {
+  "extends": "react-app",
   "env": {
     "cypress/globals": true
   }
