@@ -11,7 +11,8 @@ import {
   ExpirationDate,
   QuestionItem,
   QuestionPicture,
-  QuestionsLayout
+  QuestionsLayout,
+  Title
 } from "./styles";
 import { FloatingActionButtonLink } from "../../ui/FloatingActionButton/FloatingActionButton";
 import moment from "moment";
@@ -63,7 +64,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                         <Chip>Général</Chip>
                       </ChipList>
 
-                      <h2>{question.title}</h2>
+                      <Title>{question.title}</Title>
 
                       <ExpirationDate>
                         {moment(question.endingDate)

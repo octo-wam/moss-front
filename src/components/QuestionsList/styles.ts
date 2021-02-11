@@ -58,6 +58,10 @@ export const ChipList = styled.ul`
   grid-row: 1;
 `;
 
+export const Title = styled.h2`
+  margin-bottom: 1rem;
+`;
+
 export const AuthorName = styled.p`
   grid-column: 3;
 
