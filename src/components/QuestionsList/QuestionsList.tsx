@@ -5,12 +5,14 @@ import { Card } from "../../ui/Card/Card";
 import { Question } from "../../models";
 import { useService } from "../ServicesProvider/hooks";
 import {
+  AuthorName,
   CardLayout,
   ChipList,
   ExpirationDate,
   QuestionItem,
   QuestionPicture,
-  QuestionsLayout
+  QuestionsLayout,
+  Title
 } from "./styles";
 import { FloatingActionButtonLink } from "../../ui/FloatingActionButton/FloatingActionButton";
 import moment from "moment";
@@ -62,13 +64,16 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                         <Chip>Général</Chip>
                       </ChipList>
 
-                      <h2>{question.title}</h2>
+                      <Title>{question.title}</Title>
 
                       <ExpirationDate>
                         {moment(question.endingDate)
                           .startOf("day")
                           .fromNow()}
                       </ExpirationDate>
+                      <AuthorName data-cy="author-name">
+                        Postée par <span>{question.user.name}</span>
+                      </AuthorName>
                     </CardLayout>
                   </Card>
                 </Link>

@@ -2,6 +2,9 @@
   "name": "moss",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "@types/jest": "24.0.22",
     "@types/node": "12.12.6",
@@ -30,9 +33,6 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --record",
     "test:ui": " start-server-and-test test:serve 3000 cypress:run"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

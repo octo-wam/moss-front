@@ -14,6 +14,9 @@ function ensureQuestionInfoIsDisplayed() {
   cy.get("p")
     .contains("in 4 days")
     .should("exist");
+  cy.get(`[data-cy="author-name"]`)
+    .contains("Postée par Test User 1")
+    .should("exist");
 }
 
 function ensureResultIsDisplayed(label) {

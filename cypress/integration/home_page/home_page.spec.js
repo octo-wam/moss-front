@@ -1,11 +1,15 @@
 /// <reference types="Cypress" />
 
-function ensureQuestionIsDisplayed({ id, title, timeAgo }) {
+function ensureQuestionIsDisplayed({ id, title, timeAgo, authorName }) {
   const titleEl = cy.get("h2").contains(title);
   titleEl.should("exist");
 
   const containerEl = titleEl.closest("a");
   containerEl.contains(timeAgo).should("exist");
+
+  cy.get(`[data-cy="author-name"]`)
+    .contains("Postée par " + authorName)
+    .should("exist");
 
   containerEl.click();
 
@@ -35,13 +39,15 @@ describe("Home page", () => {
     ensureQuestionIsDisplayed({
       id: "question-1",
       title: "Quel nom pour la league ?",
-      timeAgo: "in 4 days"
+      timeAgo: "in 4 days",
+      authorName: "Test User 1"
     });
 
     ensureQuestionIsDisplayed({
       id: "question-2",
       title: "Quelle est la couleur du cheval blanc d'Henry 4 ?",
-      timeAgo: "in 10 days"
+      timeAgo: "in 10 days",
+      authorName: "Test User 2"
     });
   });
 
