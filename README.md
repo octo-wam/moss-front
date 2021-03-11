@@ -20,7 +20,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Run back server
 
-- App needs api running: [moss back server url](https://github.com/octo-wam/moss-back)
+- App needs API running: [moss back server url](https://github.com/octo-wam/moss-back) (update `.env` with accurate REACT_APP_API_PATH and REACT_APP_BACK_BASE_URL)
 
 ## Available Scripts
 

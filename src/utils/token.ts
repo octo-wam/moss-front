@@ -30,8 +30,7 @@ export function getOauthTokenOrRedirect(): string {
   return "";
 }
 
-export const LOGIN_PAGE_URL =
-  "https://octo-moss-back.herokuapp.com/auth/google_oauth2";
+const LOGIN_PAGE_URL = `${process.env.REACT_APP_BACK_BASE_URL}/auth/google_oauth2`;
 
 export function redirectToLoginPage() {
   window.location.href = `${LOGIN_PAGE_URL}?redirect_to=${window.location.href}`;

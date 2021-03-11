@@ -14,7 +14,10 @@ import * as serviceWorker from "./serviceWorker";
 import { Theme } from "./ui/Theme/Theme";
 
 const authToken = getOauthTokenOrRedirect();
-const apiUrl = process.env.REACT_APP_API_URL!;
+
+const apiPath = process.env.REACT_APP_API_PATH!;
+
+const apiUrl = `${process.env.REACT_APP_BACK_BASE_URL}${apiPath}`;
 
 const httpClient = createHttpClient(apiUrl, authToken);
 
