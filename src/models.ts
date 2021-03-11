@@ -30,6 +30,7 @@ export interface Me {
   id: string;
   email: string;
   name: string;
+  photo: string | null;
 }
 
 export interface Vote {

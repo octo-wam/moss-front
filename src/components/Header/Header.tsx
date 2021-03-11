@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = () => {
         </Link>
         <UserLayout>
           <UserAvatar
-            src={`https://api.adorable.io/avatars/100/${me.id}.png`}
+            src={me.photo || `http://www.fillmurray.com/50/50`}
           />
           <p>{me.name}</p>
         </UserLayout>
