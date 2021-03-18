@@ -58,7 +58,7 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
                     <CardLayout>
                       <QuestionPicture
                         data-cy="author-profil-picture"
-                        src={question.user.photo || `https://www.fillmurray.com/50/50`}
+                        src={question.user.photo || `https://www.fillmurray.com/150/150`}
                       />
 
                       <ChipList>

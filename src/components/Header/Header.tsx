@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = () => {
         </Link>
         <UserLayout>
           <UserAvatar
-            src={me.photo || `http://www.fillmurray.com/50/50`}
+            src={me.photo || `http://www.fillmurray.com/150/150`}
           />
           <p>{me.name}</p>
         </UserLayout>

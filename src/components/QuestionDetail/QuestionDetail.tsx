@@ -20,7 +20,6 @@ import { Chip } from "../../ui/Chip/Chip";
 import { AnswerResults } from "../../ui/AnswerResults/AnswerResults";
 import { PageContent } from "../../ui/Layout/Layout";
 import Helmet from "react-helmet";
-import {QuestionPicture} from "../QuestionsList/styles";
 
 export interface QuestionDetailProps {
   id: string;
@@ -51,7 +50,7 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
             <QuestionLayout>
               <Picture
                 data-cy="author-profil-picture"
-                src={question.user.photo || `https://www.fillmurray.com/50/50`}
+                src={question.user.photo || `https://www.fillmurray.com/150/150`}
               />
 
               <ChipList>
