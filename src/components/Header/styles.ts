@@ -42,5 +42,4 @@ export const UserAvatar = styled.img`
   border-radius: 50%;
   width: 4rem;
   height: 4rem;
-  border: 1px solid #555;
 `;

@@ -49,7 +49,8 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
           <form onSubmit={submitAnswer}>
             <QuestionLayout>
               <Picture
-                src={`https://api.adorable.io/avatars/100/${question.id}.png`}
+                data-cy="author-profil-picture"
+                src={question.user.photo}
               />
 
               <ChipList>

@@ -52,12 +52,13 @@ export const QuestionsList: React.FC<QuestionsListProps> = () => {
 
           <ol>
             {questions.map(question => (
-              <QuestionItem key={question.id}>
+              <QuestionItem data-cy={`question-${question.id}`} key={question.id}>
                 <Link to={`question/${question.id}`}>
                   <Card>
                     <CardLayout>
                       <QuestionPicture
-                        src={`https://api.adorable.io/avatars/100/${question.id}.png`}
+                        data-cy="author-profil-picture"
+                        src={question.user.photo}
                       />
 
                       <ChipList>

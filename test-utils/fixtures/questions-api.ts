@@ -1,6 +1,6 @@
-import { Question } from "../../src/models";
+import { QuestionApi } from "../../src/api-models";
 
-export function aQuestion(id: string): Question {
+export function anApiQuestion(id: string): QuestionApi {
   return {
     id,
     title: "Quel nom pour la league?",
@@ -9,7 +9,7 @@ export function aQuestion(id: string): Question {
     user: {
       id: "208294780284604222681",
       name: "Test User",
-      photo: "https://www.fillmurray.com/200/200"
+      photo: null
     },
     answers: [
       {
@@ -31,6 +31,6 @@ export function aQuestion(id: string): Question {
   };
 }
 
-export function someQuestions(): Question[] {
-  return [aQuestion("1")];
+export function someApiQuestions(): QuestionApi[] {
+  return [anApiQuestion("1")];
 }

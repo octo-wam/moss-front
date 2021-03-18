@@ -17,6 +17,9 @@ function ensureQuestionInfoIsDisplayed() {
   cy.get(`[data-cy="author-name"]`)
     .contains("Postée par Test User 1")
     .should("exist");
+  cy.get(`[data-cy="author-profil-picture"]`)
+    .invoke("attr", "src")
+    .should("equal", "https://www.fillmurray.com/150/150");
 }
 
 function ensureResultIsDisplayed(label) {

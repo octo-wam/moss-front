@@ -1,5 +1,6 @@
 {
   "id": "user-1",
   "email": "jane.doe@octo.com",
-  "name": "Jane Doe"
+  "name": "Jane Doe",
+  "photo": "https://www.fillmurray.com/150/150"
 }

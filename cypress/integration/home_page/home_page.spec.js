@@ -11,7 +11,11 @@ function ensureQuestionIsDisplayed({ id, title, timeAgo, authorName }) {
     .contains("Postée par " + authorName)
     .should("exist");
 
-  containerEl.click();
+  cy.get(`[data-cy="author-profil-picture"]`)
+    .invoke("attr", "src")
+    .should("equal", "https://www.fillmurray.com/150/150");
+
+  cy.get(`[data-cy="question-${id}"]`).click();
 
   cy.url().should("include", `/question/${id}`);
   cy.go("back");
