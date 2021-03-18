@@ -1,4 +1,6 @@
 import { fixtures } from "../../test-utils";
+import { QuestionApi } from "../api-models";
+import { Question } from "../models";
 
 import { QuestionService, createQuestionService } from "./Question";
 
@@ -18,13 +20,14 @@ beforeEach(() => {
 describe("fetchQuestions", () => {
   it("Calls GET /questions", async () => {
     // Given
-    const questions = fixtures.someQuestions();
-    httpClient.get.mockResolvedValue({ data: questions });
+    const questionsApi: QuestionApi[] = fixtures.someApiQuestions();
+    httpClient.get.mockResolvedValue({ data: questionsApi });
 
     // When
     const result = await service.fetchQuestions();
 
     // Then
+    const questions: Question[] = fixtures.someQuestions();
     expect(result).toEqual(questions);
     expect(httpClient.get).toHaveBeenCalledTimes(1);
     expect(httpClient.get).toHaveBeenCalledWith("/questions");
@@ -35,13 +38,14 @@ describe("fetchQuestions", () => {
   it("Calls GET /questions/42", async () => {
     // Given
     const questionId = "42";
-    const question = fixtures.aQuestion(questionId);
-    httpClient.get.mockResolvedValue({ data: question });
+    const questionApi: QuestionApi = fixtures.anApiQuestion(questionId);
+    httpClient.get.mockResolvedValue({ data: questionApi });
 
     // When
     const result = await service.fetchQuestion(questionId);
 
     // Then
+    const question: Question = fixtures.aQuestion(questionId);
     expect(result).toEqual(question);
     expect(httpClient.get).toHaveBeenCalledTimes(1);
     expect(httpClient.get).toHaveBeenCalledWith("/questions/42");

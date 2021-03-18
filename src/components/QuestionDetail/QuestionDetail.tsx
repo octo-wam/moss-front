@@ -50,7 +50,7 @@ export const QuestionDetail: React.FC<QuestionDetailProps> = ({ id }) => {
             <QuestionLayout>
               <Picture
                 data-cy="author-profil-picture"
-                src={question.user.photo || `https://www.fillmurray.com/150/150`}
+                src={question.user.photo}
               />
 
               <ChipList>

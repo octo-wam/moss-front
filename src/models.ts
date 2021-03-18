@@ -1,7 +1,13 @@
 export interface User {
   id: string;
   name: string;
-  photo: string | null;
+  photo: string;
+}
+
+export interface Answer {
+  id: string;
+  title: string;
+  description: string;
 }
 
 export interface Question {
@@ -20,17 +26,11 @@ export interface QuestionCreate {
   answers: Answer[];
 }
 
-export interface Answer {
-  id: string;
-  title: string;
-  description: string;
-}
-
 export interface Me {
   id: string;
   email: string;
   name: string;
-  photo: string | null;
+  photo: string;
 }
 
 export interface Vote {
